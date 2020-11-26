@@ -16,6 +16,14 @@ function App() {
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo]= useState({});
 
+  useEffect(()=>{
+    fetch("https://disease.sh/v3/covid-19/all")
+    .then((response) => response.json())
+    .then((data) =>{
+      setCountryInfo(data);
+    })
+  }, [])
+
   useEffect(() => {
     const getCountiresData = async () => {
       await fetch("https://disease.sh/v3/covid-19/countries")
@@ -33,18 +41,21 @@ function App() {
 
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
-    setCountry(countryCode);
+    console.log("COUNTRY CODE >>>", countryCode);
 
     const url = countryCode === "worldwide" ? 
     "https://disease.sh/v3/covid-19/all" :
-    `https://disease.sh/v3/covid-19/countries${countryCode}`
+    `https://disease.sh/v3/covid-19/countries/${countryCode}`
 
     await fetch(url)
     .then(response => response.json())
     .then((data) =>{
+      setCountry(countryCode);
       setCountryInfo(data);
     })
   };
+  
+  console.log("COUNTRY INFO >>>>", countryInfo)
 
   return (
     <div className="app">
@@ -71,9 +82,9 @@ function App() {
 
         <div className="app_stats">
           {/* info cards */}
-          <InfoCard title="Corona Virus Cases" cases={123} total={230983} />
-          <InfoCard title="Recovered" cases={1234} total={230983} />
-          <InfoCard title="Deaths" cases={12345} total={230983} />
+          <InfoCard title="Corona Virus Cases" cases={countryInfo.todayCases} total={countryInfo.cases} />
+          <InfoCard title="Recovered" cases={countryInfo.todayRecovered} total={countryInfo.recovered} />
+          <InfoCard title="Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths} />
         </div>
         {/* map */}
         <Map />
