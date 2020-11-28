@@ -84,7 +84,7 @@ function LineGraph({casesType}) {
   }, [casesType]);
 
   return (
-    <div>
+    <div className="linegraph-container"> 
       <h6>Worldwide new cases</h6>
       {data?.length > 0 && (
           <Line

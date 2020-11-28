@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, CardContent, Typography } from "@material-ui/core";
+import"./InfoCard.css"
 
 function InfoCard({ title, cases, total }) {
   return (
-    <div>
       <Card className="infoCard">
         <CardContent>
           <Typography className="infoCard_title" color="textSecondary">
@@ -14,12 +14,10 @@ function InfoCard({ title, cases, total }) {
             {cases}
           </h2>
           <Typography className="infoCard_total">
-            {total}
-            Total
+            {total} Total
           </Typography>
         </CardContent>
       </Card>
-    </div>
   );
 }
 
