@@ -65,7 +65,7 @@ const buildChartData = (data, casesType) => {
   return chartData;
 };
 
-function LineGraph({casesType}) {
+function LineGraph({casesType = "cases"}) {
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -77,7 +77,6 @@ function LineGraph({casesType}) {
         .then((data) => {
           let chartData = buildChartData(data, casesType);
           setData(chartData);
-          console.log("CHARTDATA >> ",chartData)
         });
     };
     fetchData();
@@ -85,7 +84,6 @@ function LineGraph({casesType}) {
 
   return (
     <div className="linegraph-container"> 
-      <h6>Worldwide new cases</h6>
       {data?.length > 0 && (
           <Line
           data={{

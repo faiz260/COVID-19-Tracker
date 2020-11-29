@@ -15,6 +15,13 @@ body{
   margin-bottom: 20px;
   justify-content: space-between;
 }
+.app_header h1{
+  color: rgb(243, 22, 22);
+  text-shadow: 2px 2px 2px rgb(36, 51, 255);
+}
+.app_dropdown{
+  background-color: white;
+}
 .app_stats{
   display: flex;
   justify-content: space-between;
@@ -32,5 +39,8 @@ body{
     flex-direction: column;
     text-align: center;
   }
-
+}
+.app_right h4{
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
