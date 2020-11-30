@@ -5,6 +5,7 @@ import {
   MenuItem,
   Card,
   CardContent,
+  Typography,
 } from "@material-ui/core";
 import InfoCard from "./Components/InfoCard/InfoCard";
 import Map from "./Components/Map/Map";
@@ -67,15 +68,22 @@ function App() {
         setMapZoom(2);
       });
   };
+  console.log("Country INFo >>", countryInfo);
 
   return (
     <div className="app">
       <div className="app_left">
         {/* Header */}
         <div className="app_header">
-          <h1>COVID-19 Tracker</h1>
-
           {/* Title & search dropdown field */}
+          <div className="app_title">
+            <img
+              className="app_header-image"
+              alt=""
+              src="https://www.medaidservices.co.uk/wp-content/uploads/2020/08/covid19-logo.png"
+            />
+            <Typography className="typo">Tracker</Typography>
+          </div>
 
           <FormControl className="app_dropdown">
             <Select
